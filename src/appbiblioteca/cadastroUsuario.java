@@ -21,8 +21,8 @@ public class cadastroUsuario extends javax.swing.JFrame {
     String senha;
     String usuario;
   
-    tabela tabelaEstudantes;
-
+    tabela tabelaEstudantes = new tabela();
+  
   
 
     
@@ -138,8 +138,10 @@ public class cadastroUsuario extends javax.swing.JFrame {
         
         this.campoSenhaUsuario.setText("");
         this.campoUsuarioLogin.setText("");
-
-
+  
+        tabelaEstudantes.getTabela(senha, usuario);
+        this.dispose();
+        tabelaEstudantes.setVisible(true);
         
         
         

@@ -5,6 +5,7 @@
 package appbiblioteca;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +20,15 @@ public class tabela extends javax.swing.JFrame {
         initComponents();
     }
     
-    public JTable getTabela(){
-        return tabelinha;
+    public void getTabela(String nomeT, String senhaT){
+        
+        DefaultTableModel tabelinha =  (DefaultTableModel) this.tabelinha.getModel();
+        
+        Object[] dados = {senhaT, nomeT};
+        tabelinha.addRow(dados);
+        
+         this.tabelinha.setVisible(true);
+        
     }
 
     /**
@@ -35,6 +43,7 @@ public class tabela extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelinha = new javax.swing.JTable();
+        voltarAoMenu = new javax.swing.JToggleButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -45,34 +54,51 @@ public class tabela extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "nome", "senha"
             }
         ));
         jScrollPane1.setViewportView(tabelinha);
+
+        voltarAoMenu.setText("Menu principal cadastro");
+        voltarAoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarAoMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 30, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(voltarAoMenu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(voltarAoMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarAoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarAoMenuActionPerformed
+      this.dispose();
+      new cadastroUsuario().setVisible(true);
+    }//GEN-LAST:event_voltarAoMenuActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelinha;
+    private javax.swing.JToggleButton voltarAoMenu;
     // End of variables declaration//GEN-END:variables
 }
